@@ -3,6 +3,9 @@ from flask_cors import CORS
 import pickle
 import pandas as pd
 import warnings
+from model import rf_model,dt_model
+import numpy as np
+
 warnings.simplefilter(action='ignore', category=UserWarning)
 
 model = pickle.load(open('./model.pkl','rb'))
@@ -20,8 +23,16 @@ def predict():
         print("Received data:",data)
         input_data = pd.DataFrame([data])
 
+        rf_prob = rf_model.predict_proba(input_data)[:, 1]
+
+
+        input_hybrid = np.column_stack((input_data, rf_prob))
+
+
+        prediction = dt_model.predict(input_hybrid)
+
         # Make a prediction
-        prediction = model.predict(input_data)
+        # prediction = model.predict(input_data)
         print(prediction)
         # Return the prediction as a JSON response
         return jsonify({"prediction": int(prediction[0])})
