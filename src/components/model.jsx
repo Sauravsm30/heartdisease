@@ -41,9 +41,8 @@ function Model() {
     };
 
     return (
+        <><Navbar />
         <div className="modelbody">
-            <Navbar />
-            <div className="title">Heart Disease Predictor</div>
             <form className="modelform" method="POST" onSubmit={handleSubmit}>
                 <div className="mainbox">
                     {/* {Object.keys(formData).map((key) => (
@@ -51,7 +50,7 @@ function Model() {
                     ))} */}
 
 
-<Inputparameter name="Age" onChange={handleChange}/>
+         <Inputparameter name="Age" onChange={handleChange}/>
          <Inputparameter name="Sex" onChange={handleChange}/>
          <Inputparameter name="cp" onChange={handleChange}/>
          <Inputparameter name="trestbps" onChange={handleChange}/>
@@ -69,7 +68,7 @@ function Model() {
                 </div>
                 <button type="submit" className="startprediction">Start Prediction</button>
             </form>
-        </div>
+        </div></>
     );
 }
 

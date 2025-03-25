@@ -1,0 +1,52 @@
+.aboutbox{
+    width: 500px;
+    height: 700px;
+    border-radius: 30px;
+}
+.input1{
+    width: 500px;
+    height: 700px;
+    border: 1px solid rgb(163, 163, 163);
+    border-radius: 30px;
+    position: absolute;
+    background-color: red;
+}
+.input2{
+    background-color: green;
+    width: 500px;
+    height: 700px;
+    border: 1px solid rgb(163, 163, 163);
+    border-radius: 30px;
+    position: absolute;
+}
+.input3{
+    background-color: blue;
+    width: 500px;
+    height: 700px;
+    border: 1px solid rgb(163, 163, 163);
+    border-radius: 30px;
+    position: absolute;
+}
+@media(max-height: 810px){
+.aboutbox{
+    display: none;
+}
+}
+@media(max-width: 1000px){
+    .aboutbox{
+        display: none;
+    }
+}
+
+#slide, #slide2, #slide3, #slide4{
+    width: 500px;
+    height: 400px;
+    border: 1px solid rgba(255, 0, 0, 0.349);
+    border-radius: 30px;
+    margin: 0;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

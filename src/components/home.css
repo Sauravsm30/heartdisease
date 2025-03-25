@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&family=Orbit&family=Orbitron:wght@400..900&display=swap');
+.homebg{
+    background-color: rgb(238, 238, 238);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bgheart{
+    width: 50%;
+    height: fit-content;
+}
+
+.homebody{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    position: absolute;
+    flex-direction: column;
+}
+.welcometo{
+    display: flex;
+    font-size: 54px;
+    font-family: 'Kumbh Sans';
+    user-select: none;
+    margin-left: 50px;
+}
+.hdp{
+    margin-left: 50px;
+    display: flex;
+    font-size: 80px;
+    font-family: 'Orbitron';
+    color: rgb(216, 64, 64);
+    user-select: none;
+}
+
+.startbutton{
+    width: 400px;
+    height: 78px;
+    background-color: rgb(216, 64, 64);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    font-family: 'orbit';
+    font-size: 30px;
+    margin-top: 30px;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid rgb(216, 64, 64);
+    transition: 0.5s;
+    margin-left: 50px;
+}
+.startbutton:hover{
+    background-color: white;
+}
+.startbutton:active{
+    background-color: black;
+    color: white;
+}
+
+@media(max-width: 1700px){
+    .welcometo{
+        font-size: 40px;
+    }
+    .hdp{
+        font-size: 60px;
+    }
+    .startbutton{
+        font-size: 25px;
+        width: 300px;
+    }
+}
+@media(max-width: 1500px){
+    .hdp{
+        width: 700px;
+    }
+}
