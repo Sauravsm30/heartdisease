@@ -2,7 +2,7 @@
     width: 300px;
     height: 25px;
     border: 0;
-    border-bottom: 1px solid;
+    border-bottom: 2px solid rgb(252, 65, 65);
     /* box-shadow: 0px 1px 1px 0px black; */
     text-align: center;
 }
@@ -38,7 +38,7 @@
     height: 38px;
     border-radius: 10px;
     padding: 10px;
-    border: 0.5px solid rgb(189, 188, 188);
+    border: 0.5px solid rgb(252, 177, 177);
 }
 
 .cp{
@@ -46,5 +46,7 @@
     height: 38px;
     border-radius: 10px;
     padding: 10px;
-    border: 0.5px solid rgb(189, 188, 188);
+    border: 0.5px solid rgb(252, 177, 177);
 }
+
+

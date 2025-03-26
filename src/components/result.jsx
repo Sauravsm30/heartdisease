@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./result.css";
 import feature_importance from "../assets/feature_importance.png";
 import confidence from "../assets/confidence_circle.png";
-import loading from "../assets/Loading_icon.gif";
+import loading from "../assets/heartloader.gif";
 
 function Result(prop) {
     const [showLoading, setShowLoading] = useState(true);
@@ -11,7 +11,7 @@ function Result(prop) {
         // Hide loading after 3 seconds
         const timer = setTimeout(() => {
             setShowLoading(false);
-        }, 1000);
+        }, 3000);
 
         // Cleanup timer on component unmount
         return () => clearTimeout(timer);
@@ -26,11 +26,13 @@ function Result(prop) {
                     </svg>
                 </div>
                 <div className="resultcontent">
+                    {prop.prediction && <div className="mainresult" style={{color:"red"}}>{prop.result}</div>}{!prop.prediction && <div className="mainresult" style={{color:"green"}}>{prop.result}</div>}
+                
                     <div className="resultimages">
                         <img src={feature_importance} width={"500px"} alt="Feature Importance" />
                        <div className="confidence"><img src={confidence} width={"400px"} alt="Confidence Score" /> <div>confidence score</div> </div> 
                     </div>
-                    {prop.result}
+                    
                 </div>
             </div>
 

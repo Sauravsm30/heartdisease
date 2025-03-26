@@ -1,13 +1,26 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./model.css";
 import Inputparameter from "./inputparameter";
 import Navbar from "./navbar";
 import Result from "./result";
+import "./home.css"
+import heart from "../assets/heartloader.gif"
 
 function Model() {
+    const [showLoading, setShowLoading] = useState(true);
+    useEffect(() => {
+                // Hide loading after 3 seconds
+                const timer = setTimeout(() => {
+                    setShowLoading(false);
+                }, 1000);
+        
+                // Cleanup timer on component unmount
+                return () => clearTimeout(timer);
+            }, []);
     
     function handlecloseclicked(){
         setResult("")
+        setPred()
         setResultStatus(false)
     }
     const [result,setResult] = useState("");
@@ -27,7 +40,7 @@ function Model() {
         thal: 0
     });
     const[resultStatus, setResultStatus] = useState(false);
-    const[pred,setPred] = useState(false)
+    const[pred,setPred] = useState()
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -50,6 +63,7 @@ function Model() {
             }
             else if(data.prediction == 0){
                 setResult("No Heart disease detected")
+                setPred(false)
             }
             setResultStatus(true);
         } catch (error) {
@@ -59,8 +73,11 @@ function Model() {
     };
 
     return (
+        
         <><Navbar />
+         {showLoading && <div className="loadingscreen"><div className="heartloader"><img src={heart} alt="" width={"200px"} /></div> </div>}
         <div className="modelbody">
+            <div className="modelheading">Heart Disease Predictor</div>
             <form className="modelform" method="POST" onSubmit={handleSubmit}>
                 <div className="mainbox">
                     {/* {Object.keys(formData).map((key) => (
@@ -71,7 +88,7 @@ function Model() {
          <Inputparameter name="Age" display_name="Age:" onChange={handleChange}/>
          <Inputparameter name="Sex" display_name="Sex:"  onChange={handleChange}/>
          <Inputparameter name="cp" display_name="Chest Pain type:"  onChange={handleChange}/>
-         <Inputparameter name="trestbps"  display_name="trestbps(in mm/HG):" onChange={handleChange}/>
+         <Inputparameter name="trestbps"  display_name="Resting Blood Pressure(in mm/HG):" onChange={handleChange}/>
          <Inputparameter name="chol"  display_name="cholesterol(in mg/dl):" onChange={handleChange}/>
          <Inputparameter name="fbs"  display_name="Fasting Blood Sugar(in mg/dl):" onChange={handleChange}/>
          <Inputparameter name="restecg" display_name="Rest ECG:"  onChange={handleChange}/>
@@ -87,7 +104,7 @@ function Model() {
                 <button type="submit" className="startprediction">Start Prediction</button>
             </form>
         </div>
-        {resultStatus && <Result result = {result} onclickwhat={handlecloseclicked}/>}
+        {resultStatus && <Result result = {result} prediction={pred} onclickwhat={handlecloseclicked}/>}
         </>
     );
 }

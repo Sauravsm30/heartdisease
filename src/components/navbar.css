@@ -8,4 +8,11 @@
     height: 50px;
     background-color: rgb(29, 22, 22);
     position: fixed;
+    z-index: 3;
+}
+
+.navitem{
+    font-family: 'orbitron';
+    cursor: pointer;
+    user-select: none;
 }

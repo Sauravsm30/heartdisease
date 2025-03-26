@@ -3,14 +3,14 @@ import "./inputparameter.css"
 import { useState } from "react";
 
 function Inputparameter(prop){
-    const [value, setValue] = useState(50); // State to track the range input
+    const [value, setValue] = useState(0); // State to track the range input
 
     if (prop.name === "Age") {
         return (
             <div className="parameterbox">
                 <label htmlFor="Age">Age: </label>
                 <div>{value}</div>
-                <input
+                <input required
                     id="Age"
                     type="range"
                     min="0"
@@ -29,7 +29,7 @@ function Inputparameter(prop){
     }
     if(prop.name == "Sex"){
         return <div className="parameterbox">Sex:
-        <select name="Sex" id="Sex" className="sex" onChange={prop.onChange}>
+        <select required name="Sex" id="Sex" className="sex" onChange={prop.onChange}>
             <option></option>
             <option value={0}>Female</option>
             <option value={1}>Male</option>
@@ -38,7 +38,7 @@ function Inputparameter(prop){
     }
     if(prop.name == "cp"){
         return <div className="parameterbox">Chest pain type:
-        <select name="cp" id="cp" className="cp" onChange={prop.onChange}>
+        <select required name="cp" id="cp" className="cp" onChange={prop.onChange}>
             <option></option>
             <option value={1}>Typical Angina</option>
             <option value={2}>Atypical Angina</option>
@@ -49,7 +49,7 @@ function Inputparameter(prop){
     }
     if(prop.name == "fbs"){
         return <div className="parameterbox">{prop.display_name}
-        <select name="fbs" id="fbs" className="sex" onChange={prop.onChange}>
+        <select required name="fbs" id="fbs" className="sex" onChange={prop.onChange}>
             <option></option>
             <option value={1}>greater than 120</option>
             <option value={0}>less than 120</option>
@@ -58,7 +58,7 @@ function Inputparameter(prop){
     }
     if(prop.name == "restecg"){
         return <div className="parameterbox">{prop.display_name}
-        <select name="restecg" id="restecg" className="sex" onChange={prop.onChange}>
+        <select required name="restecg" id="restecg" className="sex" onChange={prop.onChange}>
             <option></option>
             <option value={0}>Normal</option>
             <option value={1}>having ST-T wave abnormality</option>
@@ -68,7 +68,7 @@ function Inputparameter(prop){
     }
     if(prop.name == "exang"){
         return <div className="parameterbox">{prop.display_name}
-        <select name="exang" id="exang" className="sex" onChange={prop.onChange}>
+        <select required name="exang" id="exang" className="sex" onChange={prop.onChange}>
             <option></option>
             <option value={1}>Yes</option>
             <option value={0}>No</option>
@@ -77,7 +77,7 @@ function Inputparameter(prop){
     }
     if(prop.name == "slope"){
         return <div className="parameterbox">Slope of peak exercise ST segment:
-        <select name="slope" id="slope" className="sex" onChange={prop.onChange}>
+        <select required name="slope" id="slope" className="sex" onChange={prop.onChange} >
             <option></option>
             <option value={1}>Upsloping</option>
             <option value={2}>Flat</option>
@@ -87,7 +87,7 @@ function Inputparameter(prop){
     }
     if(prop.name == "ca"){
         return <div className="parameterbox">No of major vessels coloured:
-        <select name="ca" id="ca" className="sex" onChange={prop.onChange}>
+        <select required name="ca" id="ca" className="sex" onChange={prop.onChange}>
             <option></option>
             <option value={0}>0</option>
             <option value={1}>1</option>
@@ -98,7 +98,7 @@ function Inputparameter(prop){
     }
     if(prop.name == "thal"){
         return <div className="parameterbox">Thalassemia:
-        <select name="thal" id="thal" className="sex" onChange={prop.onChange}>
+        <select required name="thal" id="thal" className="sex" onChange={prop.onChange}>
             <option></option>
             <option value={3}>Normal</option>
             <option value={6}>Fixed Defect</option>
@@ -107,7 +107,7 @@ function Inputparameter(prop){
      </div>
     }
     return <div className="parameterbox">{prop.display_name}
-       <input name={prop.name}  onChange={prop.onChange} className="parameterinput"/>
+       <input name={prop.name} required onChange={prop.onChange} className="parameterinput"/>
     </div>
 }
 
