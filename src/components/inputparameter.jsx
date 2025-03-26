@@ -40,10 +40,10 @@ function Inputparameter(prop){
         return <div className="parameterbox">Chest pain type:
         <select name="cp" id="cp" className="cp" onChange={prop.onChange}>
             <option></option>
-            <option value={0}>Typical Angina</option>
-            <option value={1}>Atypical Angina</option>
-            <option value={2}>Anginal pain</option>
-            <option value={3}>Asymptomatic</option>
+            <option value={1}>Typical Angina</option>
+            <option value={2}>Atypical Angina</option>
+            <option value={3}>Anginal pain</option>
+            <option value={4}>Asymptomatic</option>
         </select>
      </div>
     }
@@ -56,8 +56,58 @@ function Inputparameter(prop){
         </select>
      </div>
     }
-    return <div className="parameterbox">
-       <input name={prop.name} placeholder={prop.display_name} onChange={prop.onChange} className="parameterinput"/>
+    if(prop.name == "restecg"){
+        return <div className="parameterbox">{prop.display_name}
+        <select name="restecg" id="restecg" className="sex" onChange={prop.onChange}>
+            <option></option>
+            <option value={0}>Normal</option>
+            <option value={1}>having ST-T wave abnormality</option>
+            <option value={2}>Probable or definite left ventricular hypertrophy</option>
+        </select>
+     </div>
+    }
+    if(prop.name == "exang"){
+        return <div className="parameterbox">{prop.display_name}
+        <select name="exang" id="exang" className="sex" onChange={prop.onChange}>
+            <option></option>
+            <option value={1}>Yes</option>
+            <option value={0}>No</option>
+        </select>
+     </div>
+    }
+    if(prop.name == "slope"){
+        return <div className="parameterbox">Slope of peak exercise ST segment:
+        <select name="slope" id="slope" className="sex" onChange={prop.onChange}>
+            <option></option>
+            <option value={1}>Upsloping</option>
+            <option value={2}>Flat</option>
+            <option value={3}>Downsloping</option>
+        </select>
+     </div>
+    }
+    if(prop.name == "ca"){
+        return <div className="parameterbox">No of major vessels coloured:
+        <select name="ca" id="ca" className="sex" onChange={prop.onChange}>
+            <option></option>
+            <option value={0}>0</option>
+            <option value={1}>1</option>
+            <option value={2}>2</option>
+            <option value={3}>3</option>
+        </select>
+     </div>
+    }
+    if(prop.name == "thal"){
+        return <div className="parameterbox">Thalassemia:
+        <select name="thal" id="thal" className="sex" onChange={prop.onChange}>
+            <option></option>
+            <option value={3}>Normal</option>
+            <option value={6}>Fixed Defect</option>
+            <option value={7}>Reversable Defect</option>
+        </select>
+     </div>
+    }
+    return <div className="parameterbox">{prop.display_name}
+       <input name={prop.name}  onChange={prop.onChange} className="parameterinput"/>
     </div>
 }
 

@@ -6,9 +6,10 @@ import Result from "./result";
 
 function Model() {
     function handlecloseclicked(){
+        setResult("")
         setResultStatus(false)
     }
-    const result = "No heart disease detected";
+    const [result,setResult] = useState("");
     const [formData, setFormData] = useState({
         Age: 0,
         Sex: 0,
@@ -42,8 +43,11 @@ function Model() {
             const data = await response.json();
             // alert(`Prediction: ${data.prediction}`);
             if(data.prediction == 1){
-                result = "Heart disease detected";
+                setResult("Heart disease detected")
                 setPred(true)
+            }
+            else if(data.prediction == 0){
+                setResult("No Heart disease detected")
             }
             setResultStatus(true);
         } catch (error) {
@@ -69,7 +73,7 @@ function Model() {
          <Inputparameter name="fbs"  display_name="Fasting Blood Sugar(in mg/dl):" onChange={handleChange}/>
          <Inputparameter name="restecg" display_name="Rest ECG:"  onChange={handleChange}/>
          <Inputparameter name="thalach" display_name="Max Heart Rate:"  onChange={handleChange}/>
-         <Inputparameter name="exang" display_name="Angina induced by exercise:"  onChange={handleChange}/>
+         <Inputparameter name="exang" display_name="Exercise induced chest pain:"  onChange={handleChange}/>
          <Inputparameter name="oldpeak" display_name="Oldpeak:"  onChange={handleChange}/>
          <Inputparameter name="slope" display_name="Slope:"  onChange={handleChange}/>
          <Inputparameter name="ca"  display_name="No. of major vessels:" onChange={handleChange}/>
