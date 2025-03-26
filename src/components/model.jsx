@@ -5,6 +5,7 @@ import Navbar from "./navbar";
 import Result from "./result";
 
 function Model() {
+    
     function handlecloseclicked(){
         setResult("")
         setResultStatus(false)
@@ -33,6 +34,7 @@ function Model() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         
         try {
             const response = await fetch("http://127.0.0.1:5000/predict", {
@@ -53,6 +55,7 @@ function Model() {
         } catch (error) {
             console.error("Error:", error);
         }
+        
     };
 
     return (
