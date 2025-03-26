@@ -5,10 +5,11 @@ import Navbar from "./navbar";
 import Result from "./result";
 
 function Model() {
+    
     function handlecloseclicked(){
         setResultStatus(false)
     }
-    const result = "No heart disease detected";
+    const[result,setResult] = useState("No heart disease detected.")
     const [formData, setFormData] = useState({
         Age: 0,
         Sex: 0,
@@ -32,6 +33,7 @@ function Model() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         
         try {
             const response = await fetch("http://127.0.0.1:5000/predict", {
@@ -42,13 +44,14 @@ function Model() {
             const data = await response.json();
             // alert(`Prediction: ${data.prediction}`);
             if(data.prediction == 1){
-                result = "Heart disease detected";
+                setResult("Heart disease detected.")
                 setPred(true)
             }
             setResultStatus(true);
         } catch (error) {
             console.error("Error:", error);
         }
+        
     };
 
     return (
